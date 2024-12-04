@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #ffffff; /* Cor de fundo opcional. */
+    }
+    .qrcode-container {
+      margin-bottom: 20px; /* Espaço entre os QR Codes */
+    }
+  
+  #qrcode-area {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+  <div id="qrcode-area"></div>
+
+  <script>
+    // Códigos internos separados por vírgula
+    let internalCodes = [
+    "",
+    "102428112024#000037",
+    "102428112024#000040",
+    "102428112024#000036",
+    "",
+    ];
+
+    // Função para gerar os QR codes
+    function gerarQRCodes(codes) {
+      let qrArea = document.getElementById('qrcode-area');
+      codes.forEach(function(code) {
+        // Cria um container para o QR code
+        let div = document.createElement('div');
+        div.className = 'qrcode-container';
+
+        // Adiciona o QRCode dentro da div
+        new QRCode(div, {
+          text: code,
+          width: 128,
+          height: 128
+        });
+
+        // Adiciona o container ao HTML
+        qrArea.appendChild(div);
+      });
+    }
+
+    // Chama a função para gerar os QR codes
+    gerarQRCodes(internalCodes);
+  </script>
+</body>
+</html>
